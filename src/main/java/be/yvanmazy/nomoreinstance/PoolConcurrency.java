@@ -24,10 +24,17 @@
 
 package be.yvanmazy.nomoreinstance;
 
+import org.jetbrains.annotations.Contract;
+
 public enum PoolConcurrency {
 
     NOT_CONCURRENT,
     SYNCHRONIZED,
-    LOCK_FREE
+    LOCK_FREE;
+
+    @Contract(pure = true)
+    public boolean isThreadSafe() {
+        return this == SYNCHRONIZED || this == LOCK_FREE;
+    }
 
 }

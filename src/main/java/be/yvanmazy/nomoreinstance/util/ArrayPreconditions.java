@@ -22,51 +22,26 @@
  * SOFTWARE.
  */
 
-package be.yvanmazy.nomoreinstance.object;
+package be.yvanmazy.nomoreinstance.util;
 
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
+public final class ArrayPreconditions {
 
-public final class Wrapper<T> {
-
-    private T value;
-
-    public Wrapper(final @Nullable T value) {
-        this.value = value;
+    private ArrayPreconditions() throws IllegalAccessException {
+        throw new IllegalAccessException("You cannot instantiate this class");
     }
 
-    public Wrapper() {
-    }
-
-    public @Nullable T getValue() {
-        return this.value;
-    }
-
-    public void setValue(final @Nullable T value) {
-        this.value = value;
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
+    public static <T> @NotNull T @NotNull [] requireNonNull(final T[] array, final String message) {
+        if (array == null) {
+            throw new NullPointerException(message);
         }
-        if (o == null || this.getClass() != o.getClass()) {
-            return false;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) {
+                throw new NullPointerException("Array element at index '" + i + "' is null");
+            }
         }
-        final Wrapper<?> wrapper = (Wrapper<?>) o;
-        return Objects.equals(this.value, wrapper.value);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(this.value);
-    }
-
-    @Override
-    public String toString() {
-        return "Wrapper{value=" + this.value + '}';
+        return array;
     }
 
 }

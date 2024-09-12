@@ -22,51 +22,22 @@
  * SOFTWARE.
  */
 
-package be.yvanmazy.nomoreinstance.object;
+package be.yvanmazy.nomoreinstance;
 
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
+import java.util.function.Consumer;
 
-public final class Wrapper<T> {
+public interface CleanablePool<T> extends Pool<Cleanable<T>> {
 
-    private T value;
-
-    public Wrapper(final @Nullable T value) {
-        this.value = value;
-    }
-
-    public Wrapper() {
-    }
-
-    public @Nullable T getValue() {
-        return this.value;
-    }
-
-    public void setValue(final @Nullable T value) {
-        this.value = value;
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
+    default void peek(final @NotNull Consumer<T> consumer) {
+        try (final Cleanable<T> cleanable = this.get()) {
+            consumer.accept(cleanable.value());
         }
-        if (o == null || this.getClass() != o.getClass()) {
-            return false;
-        }
-        final Wrapper<?> wrapper = (Wrapper<?>) o;
-        return Objects.equals(this.value, wrapper.value);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(this.value);
-    }
+    void clean(final int index);
 
-    @Override
-    public String toString() {
-        return "Wrapper{value=" + this.value + '}';
-    }
+    void cleanAll();
 
 }

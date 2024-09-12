@@ -22,51 +22,12 @@
  * SOFTWARE.
  */
 
-package be.yvanmazy.nomoreinstance.object;
+package be.yvanmazy.nomoreinstance.exception;
 
-import org.jetbrains.annotations.Nullable;
+public sealed class PoolException extends RuntimeException permits NoMoreObjectException, NullObjectProvidedException {
 
-import java.util.Objects;
-
-public final class Wrapper<T> {
-
-    private T value;
-
-    public Wrapper(final @Nullable T value) {
-        this.value = value;
-    }
-
-    public Wrapper() {
-    }
-
-    public @Nullable T getValue() {
-        return this.value;
-    }
-
-    public void setValue(final @Nullable T value) {
-        this.value = value;
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || this.getClass() != o.getClass()) {
-            return false;
-        }
-        final Wrapper<?> wrapper = (Wrapper<?>) o;
-        return Objects.equals(this.value, wrapper.value);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(this.value);
-    }
-
-    @Override
-    public String toString() {
-        return "Wrapper{value=" + this.value + '}';
+    public PoolException(final String message) {
+        super(message);
     }
 
 }

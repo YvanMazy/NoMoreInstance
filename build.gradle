@@ -10,8 +10,11 @@ repositories {
     mavenCentral()
 }
 
+final def annotationsVersion = '24.1.0'
+
 dependencies {
-    compileOnly 'org.jetbrains:annotations:24.1.0'
+    compileOnly "org.jetbrains:annotations:$annotationsVersion"
+    testCompileOnly "org.jetbrains:annotations:$annotationsVersion"
 
     testImplementation platform('org.junit:junit-bom:5.11.0')
     testImplementation'org.junit.jupiter:junit-jupiter'

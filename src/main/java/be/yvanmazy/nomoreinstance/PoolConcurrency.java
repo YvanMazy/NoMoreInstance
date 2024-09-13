@@ -32,6 +32,8 @@ public enum PoolConcurrency {
     SYNCHRONIZED,
     LOCK_FREE;
 
+    public static final PoolConcurrency DEFAULT = NOT_CONCURRENT;
+
     @Contract(pure = true)
     public boolean isThreadSafe() {
         return this == SYNCHRONIZED || this == LOCK_FREE;

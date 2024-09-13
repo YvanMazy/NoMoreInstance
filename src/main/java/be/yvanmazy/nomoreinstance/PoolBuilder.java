@@ -34,7 +34,7 @@ import java.util.function.UnaryOperator;
 final class PoolBuilder<T> implements Pool.Builder<T> {
 
     private Supplier<T> supplier;
-    private PoolConcurrency concurrency = PoolConcurrency.NOT_CONCURRENT;
+    private PoolConcurrency concurrency = PoolConcurrency.DEFAULT;
     private UnaryOperator<T> cleaner;
 
     @Override

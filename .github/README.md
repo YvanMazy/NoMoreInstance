@@ -6,7 +6,7 @@ environments. Designed for performance-critical applications.
 
 - [✨ Features](#-features)
 - [❓ When to Use](#-when-to-use)
-- [⚙️ How to Use](#-how-to-use)
+- [⚙️ How to Use](#%EF%B8%8F-how-to-use)
   - [Import the dependency with Gradle or Maven](#import-the-dependency-with-gradle-or-maven)
   - [Create a Pool](#create-a-pool)
   - [What Concurrency Level to choose?](#what-concurrency-level-to-choose)
@@ -112,7 +112,7 @@ The library offers two pool types:
 ## 📄 License
 
 This project is under the MIT License, offering the freedom to use, modify, and distribute the software. See
-the [LICENSE](./LICENSE) file for more details.
+the [LICENSE](../LICENSE) file for more details.
 
 ## 🔌 Contributing
 

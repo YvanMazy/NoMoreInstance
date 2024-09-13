@@ -31,7 +31,7 @@ import org.junit.jupiter.params.provider.EnumSource;
 import static be.yvanmazy.nomoreinstance.util.ArrayTestUtil.filledVectors;
 import static org.junit.jupiter.api.Assertions.*;
 
-abstract class AbstractPoolTest {
+abstract class AbstractPoolTest<P extends Pool<?>> extends ConcurrencyPoolTest<P> {
 
     protected static final Vector ZERO_VECTOR = new Vector(0, 0, 0);
     protected static final Vector ONE_VECTOR = new Vector(1, 1, 1);

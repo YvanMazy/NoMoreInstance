@@ -8,6 +8,7 @@ version = '1.0'
 
 repositories {
     mavenCentral()
+    maven { url 'https://jitpack.io' }
 }
 
 final def annotationsVersion = '24.1.0'
@@ -15,6 +16,7 @@ final def annotationsVersion = '24.1.0'
 dependencies {
     compileOnly "org.jetbrains:annotations:$annotationsVersion"
     testCompileOnly "org.jetbrains:annotations:$annotationsVersion"
+    testCompileOnly 'com.github.YvanMazy:concurrent-testing:0964170fa0'
 
     testImplementation platform('org.junit:junit-bom:5.11.0')
     testImplementation'org.junit.jupiter:junit-jupiter'

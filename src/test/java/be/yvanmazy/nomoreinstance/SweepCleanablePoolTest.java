@@ -30,7 +30,7 @@ import org.junit.jupiter.params.provider.EnumSource;
 import static be.yvanmazy.nomoreinstance.util.ArrayTestUtil.filledVectors;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class SweepCleanablePoolTest extends AbstractPoolTest {
+class SweepCleanablePoolTest extends AbstractPoolTest<SweepCleanablePool<?>> {
 
     @ParameterizedTest
     @EnumSource(PoolConcurrency.class)
@@ -50,6 +50,16 @@ class SweepCleanablePoolTest extends AbstractPoolTest {
     @Override
     protected <T> SweepCleanablePool<T> build(final Pool.Builder<T> builder, final T[] poolArray) {
         return builder.buildSweep(poolArray);
+    }
+
+    @Override
+    protected SweepCleanablePool<Object> buildConcurrencyPool(final Pool.Builder<Object> builder, final Object[] poolArray) {
+        return builder.buildSweep(poolArray);
+    }
+
+    @Override
+    protected void cleanAll(final SweepCleanablePool<?> pool) {
+        pool.cleanAll();
     }
 
 }

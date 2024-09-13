@@ -27,7 +27,7 @@ package be.yvanmazy.nomoreinstance.exception;
 public final class NoMoreObjectException extends PoolException {
 
     public NoMoreObjectException() {
-        super("No more object in pool!");
+        super("No more objects available in the pool. Increase the pool size or provide a supplier.");
     }
 
 }

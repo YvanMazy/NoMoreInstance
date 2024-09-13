@@ -50,7 +50,7 @@ abstract class AbstractPool<T> {
         if (cleaner != null) {
             object = cleaner.apply(object);
             if (object == null) {
-                throw new NullObjectProvidedException("Pool cleaner produce a null object!");
+                throw new NullObjectProvidedException("Pool cleaner produce a null object");
             }
             return this.pool[index] = object;
         }
@@ -64,7 +64,7 @@ abstract class AbstractPool<T> {
         }
         final T object = supplier.get();
         if (object == null) {
-            throw new NullObjectProvidedException("Pool supplier produce a null object!");
+            throw new NullObjectProvidedException("Pool supplier produce a null object");
         }
         return object;
     }

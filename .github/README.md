@@ -29,6 +29,8 @@ objects, as object pooling is primarily beneficial for managing short-lived inst
 
 ## ⚙️ How to Use
 
+- Java 17 or higher is required.
+
 ### Import the dependency with Gradle or Maven
 
 **Latest version**: [![Release](https://jitpack.io/v/YvanMazy/NoMoreInstance.svg)](https://jitpack.io/#YvanMazy/NoMoreInstance)

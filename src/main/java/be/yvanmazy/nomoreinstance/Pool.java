@@ -47,6 +47,11 @@ public interface Pool<T> {
     @Contract(pure = true)
     @NotNull PoolConcurrency poolConcurrency();
 
+    @Contract(value = "-> new", pure = true)
+    default @NotNull Supplier<T> asSupplier() {
+        return this::get;
+    }
+
     interface Builder<T> {
 
         @Contract("_ -> this")
